@@ -1,6 +1,9 @@
 from src.CNNClassifier import logger
 from src.CNNClassifier.pipeline.stage_01_data_ingestion import DataIngestionPipeline
 from src.CNNClassifier.pipeline.stage_02_base_model_prep import BaseModelTrainingPipeline
+from src.CNNClassifier.pipeline.stage_03_model_training import ModelTrainingPipeline
+
+
 
 STAGE_NAME = "Data Ingestion"
 
@@ -24,3 +27,16 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+STAGE_NAME = "Model Training"
+
+try:
+    logger.info(f"Stage {STAGE_NAME} started")
+    obj=ModelTrainingPipeline()
+    obj.main()
+    logger.info(f"Stage {STAGE_NAME} completed")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+

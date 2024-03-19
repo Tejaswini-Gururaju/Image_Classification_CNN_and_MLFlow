@@ -1,7 +1,9 @@
 from src.CNNClassifier.constants import *
+import os
 from src.CNNClassifier.utils.common import read_yaml,create_directories
 from src.CNNClassifier.entity.config_entity import DataIngestionConfig
 from src.CNNClassifier.entity.config_entity import PrepareBaseModelConfig
+from src.CNNClassifier.entity.config_entity import TrainingConfig
 
 
 class ConfigurationManager:
@@ -56,6 +58,35 @@ class ConfigurationManager1:
             
         )
         return base_model_config
+
+
+
+class ConfigurationManager2:
+    def __init__(self,config_filepath = CONFIG_FILE_PATH, params_filepath = PARAMS_FILE_PATH):
+        self.config=read_yaml(config_filepath)
+        self.params=read_yaml(params_filepath)
+
+        create_directories([self.config.artifacts_root])
+
+    def get_training_config(self) -> TrainingConfig:
+        config=self.config.training
+        prepare_model=self.config.prepare_base_model
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir,"Chest-CT-Scan-data")
+
+        create_directories([Path(config.root_dir)])
+
+        trained_config=TrainingConfig(
+            root_dir=Path(config.root_dir),
+            trained_model_path=Path(config.trained_model_path),
+            updated_base_model_path=Path(prepare_model.updated_base_model_path),
+            training_data=Path(training_data),
+            params_epochs=self.params.EPOCHS,
+            params_batch_size=self.params.BATCH_SIZE,
+            params_is_augmentation=self.params.AUGMENTATION,
+            params_image_size=self.params.IMAGE_SIZE
+        )
+        return trained_config
+
 
 
     
