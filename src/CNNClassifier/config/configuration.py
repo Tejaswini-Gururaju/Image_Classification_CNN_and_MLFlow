@@ -1,10 +1,10 @@
-from src.CNNClassifier.constants import *
+from CNNClassifier.constants import *
 import os
-from src.CNNClassifier.utils.common import read_yaml,create_directories
-from src.CNNClassifier.entity.config_entity import DataIngestionConfig
-from src.CNNClassifier.entity.config_entity import PrepareBaseModelConfig
-from src.CNNClassifier.entity.config_entity import TrainingConfig
-
+from CNNClassifier.utils.common import read_yaml,create_directories
+from CNNClassifier.entity.config_entity import DataIngestionConfig
+from CNNClassifier.entity.config_entity import PrepareBaseModelConfig
+from CNNClassifier.entity.config_entity import TrainingConfig
+from CNNClassifier.entity.config_entity import EvaluationConfig
 
 class ConfigurationManager:
     # def __init__(self,config_file_path = CONFIG_FILE_PATH,params_filepath = PARAMS_FILE_PATH):
@@ -88,7 +88,26 @@ class ConfigurationManager2:
         return trained_config
 
 
+class ConfigurationManager3:
+    def __init__(
+        self, 
+        config_filepath = CONFIG_FILE_PATH,
+        params_filepath = PARAMS_FILE_PATH):
+        self.config = read_yaml(config_filepath)
+        self.params = read_yaml(params_filepath)
+        create_directories([self.config.artifacts_root])
 
+    
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/Chest-CT-Scan-data",
+            mlflow_uri="https://dagshub.com/tejaswini1999teju15/Image_Classification_CNN_and_MLFlow.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config
     
 
 

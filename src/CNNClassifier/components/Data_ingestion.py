@@ -2,8 +2,8 @@ import logging
 import zipfile
 import gdown
 import os
-from src.CNNClassifier import logger
-from src.CNNClassifier.entity.config_entity import DataIngestionConfig
+from CNNClassifier import logger
+from CNNClassifier.entity.config_entity import DataIngestionConfig
 
 
 class DataIngestion:

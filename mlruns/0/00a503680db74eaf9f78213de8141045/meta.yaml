@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Image_Classification_CNN_and_MLFlow/mlruns/0/00a503680db74eaf9f78213de8141045/artifacts
+end_time: 1711035577970
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 00a503680db74eaf9f78213de8141045
+run_name: legendary-stoat-650
+run_uuid: 00a503680db74eaf9f78213de8141045
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711035534635
+status: 3
+tags: []
+user_id: admin

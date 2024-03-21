@@ -3,7 +3,7 @@ from zipfile import ZipFile
 import time
 import tensorflow as tf
 from pathlib import Path
-from src.CNNClassifier.entity.config_entity import TrainingConfig
+from CNNClassifier.entity.config_entity import TrainingConfig
 
 class TrainingModel:
     def __init__(self,config:TrainingConfig):

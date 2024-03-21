@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Image_Classification_CNN_and_MLFlow/mlruns/0/722804a26b394013b17fb24f12b74ffa/artifacts
+end_time: 1711031035655
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 722804a26b394013b17fb24f12b74ffa
+run_name: nosy-carp-893
+run_uuid: 722804a26b394013b17fb24f12b74ffa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711030892093
+status: 3
+tags: []
+user_id: admin
